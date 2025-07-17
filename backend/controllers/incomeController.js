@@ -4,9 +4,8 @@ const Income = require('../models/Income');
 
 // Add Income Source
 exports.addIncome = async (req, res) => {
-
   
-    const userId = req.user.id;
+  const userId = req.user.id;
 
   try {
     const{icon,source,amount,date} = req.body;
