@@ -5,6 +5,11 @@ import Input from '../../components/Inputs/Input'
 import { Link } from 'react-router-dom'
 import { validateEmail } from '../../utils/helper'
 import ProfilePhotoSelector from '../../components/Inputs/ProfilePhotoSelector'
+import axiosInstance from '../../utils/axiosInstance'
+import { useContext } from 'react'
+import { UserContext } from '../../context/userContext'
+import uploadImage from '../../utils/uploadImage'
+import { API_PATHS } from '../../utils/apiPaths'
 
 
 
@@ -15,6 +20,8 @@ function SignUp() {
   const [password,setPassword] = useState('');
 
   const [error,setError] = useState(null)
+
+  const {updateUser} = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -41,9 +48,48 @@ function SignUp() {
       return;
     }
 
-    setError();
+    setError("");
 
+    console.log("✅ Validation passed");
     //SignUp API Call
+
+    try {
+
+      // Upload image if present
+      console.log("📦 Sending request to register user");
+
+      if(profilePic)
+      {
+        const imgUploadsRes = await uploadImage(profilePic);
+        profileImageUrl = imgUploadsRes.imageUrl || "";
+      }
+
+      const response  = await axiosInstance.post(API_PATHS.AUTH.REGISTER,{
+        fullName,
+        email,
+        password,
+        profileImageUrl,
+      });
+
+       console.log("🎉 Register Success", response.data);
+
+      const {token,user} = response.data;
+
+      if(token)
+      {
+        localStorage.setItem("token",token);
+        updateUser(user);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      if(error.response && error.response.data.message)
+      {
+        setError(error.response.data.message);
+      }
+      else {
+        setError("Something went wrong, Please try again");
+      }
+    }
   }
 
   return (
