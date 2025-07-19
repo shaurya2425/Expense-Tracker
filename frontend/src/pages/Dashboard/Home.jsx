@@ -12,6 +12,7 @@ import {IoMdCard} from 'react-icons/io';
 import { addThousandsSeparator } from '../../utils/helper.js';
 import RecentTransactions from '../../components/Dashboard/RecentTransactions.jsx';
 import FinanceOverview from '../../components/Dashboard/FinanceOverview.jsx';
+import ExpenseTransactions from '../../components/Dashboard/ExpenseTransactions.jsx';
 
 function Home() {
 
@@ -80,7 +81,7 @@ function Home() {
           </div> */}
 
           <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
-              <RecentTransactions
+              {/* <RecentTransactions
                   transactions={dashboardData?.recentTransactions}
                   onSeeMore={()=>navigate("/expense")}
               />
@@ -89,7 +90,12 @@ function Home() {
                 totalBalance = {dashboardData?.totalBalance || 0 }
                 totalIncome = {dashboardData?.totalIncome || 0 }
                 totalExpense = {dashboardData?.totalExpense || 0 }
-            />
+              /> */}
+
+              <ExpenseTransactions
+                transactions={dashboardData?.last30DaysExpenses?.transaction || [] }
+                onSeeMore={()=>navigate("/expense")}
+              />
 
           </div>
 
