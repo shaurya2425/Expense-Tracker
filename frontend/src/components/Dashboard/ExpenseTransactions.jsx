@@ -5,7 +5,7 @@ import moment from 'moment'
 
 function ExpenseTransactions({transactions,onSeeMore}) {
   return (
-    <div class='card'>
+    <div className='card'>
         <div className='flex items-center justify-between' >
             <h5 className='text-lg' >Expenses</h5>
 

@@ -14,6 +14,7 @@ import RecentTransactions from '../../components/Dashboard/RecentTransactions.js
 import FinanceOverview from '../../components/Dashboard/FinanceOverview.jsx';
 import ExpenseTransactions from '../../components/Dashboard/ExpenseTransactions.jsx';
 import Last30DaysExpenses from '../../components/Dashboard/Last30DaysExpenses.jsx';
+import RecentIncomeWithChart from '../../components/Dashboard/RecentIncomeWithChart.jsx';
 
 function Home() {
 
@@ -52,6 +53,11 @@ function Home() {
     return ()=> {};
   },[])
 
+   const incomeData = dashboardData?.recentTransactions?.filter(
+    (tx) => tx.type === "income"
+  ) || [];
+
+  const totalIncome = dashboardData?.totalIncome || 0;
   
  
   return (
@@ -82,7 +88,7 @@ function Home() {
           </div> */}
 
           <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
-              {/* <RecentTransactions
+              <RecentTransactions
                   transactions={dashboardData?.recentTransactions}
                   onSeeMore={()=>navigate("/expense")}
               />
@@ -91,7 +97,7 @@ function Home() {
                 totalBalance = {dashboardData?.totalBalance || 0 }
                 totalIncome = {dashboardData?.totalIncome || 0 }
                 totalExpense = {dashboardData?.totalExpense || 0 }
-              /> */}
+              />
 
               <ExpenseTransactions
                 transactions={dashboardData?.last30DaysExpenses?.transaction || [] }
@@ -102,6 +108,10 @@ function Home() {
                 data={dashboardData?.last30DaysExpenses?.transaction || []}
               />
 
+              <RecentIncomeWithChart
+                data={incomeData.slice(0, 4)}
+                totalIncome={totalIncome}
+              />
           </div>
 
           
