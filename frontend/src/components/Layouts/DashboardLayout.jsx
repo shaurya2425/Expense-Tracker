@@ -11,7 +11,7 @@ function DashboardLayout({ children, activeMenu }) {
       {/* Top Navbar */}
       <Navbar activeMenu={activeMenu} />
 
-      {console.log("🧑 Logged-in User in DashboardLayout:", user)}
+      {/* {console.log("🧑 Logged-in User in DashboardLayout:", user)} */}
 
 
       {/* Show dashboard only if user is logged in */}
