@@ -18,7 +18,7 @@ function DashboardLayout({ children, activeMenu }) {
       {user && (
         <div className="flex">
           {/* Sidebar */}
-          <div className=" ">
+          <div className=" max-[1080px]:hidden">
             <SideMenu activeMenu={activeMenu} />
           </div>
 
