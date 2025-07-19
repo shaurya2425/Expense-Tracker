@@ -33,4 +33,5 @@ export const prepareExpenseBarChartData = (data=[])=>{
         category:item?.category,
         amount: item?.amount,
     }))
+    return charData;
 }
