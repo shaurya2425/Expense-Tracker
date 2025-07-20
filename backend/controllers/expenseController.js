@@ -83,12 +83,17 @@ exports.downloadExpenseExcel = async (req, res) => {
         {
           Category: item.category,
           Amount: item.amount,
-          Date: item.data
+          Date: item.date,
         }
       ))
   
       const wb = xlsx.utils.book_new();
       const ws = xlsx.utils.json_to_sheet(data);
+       ws['!cols'] = [
+      { wch: 20 },
+      { wch: 10 },
+      { wch: 15 },
+      ];
       xlsx.utils.book_append_sheet(wb,ws,"Expense");
       xlsx.writeFile(wb,'expense_details.xlsx');
       res.download('expense_details.xlsx');
