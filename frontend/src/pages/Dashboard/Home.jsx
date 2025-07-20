@@ -15,6 +15,7 @@ import FinanceOverview from '../../components/Dashboard/FinanceOverview.jsx';
 import ExpenseTransactions from '../../components/Dashboard/ExpenseTransactions.jsx';
 import Last30DaysExpenses from '../../components/Dashboard/Last30DaysExpenses.jsx';
 import RecentIncomeWithChart from '../../components/Dashboard/RecentIncomeWithChart.jsx';
+import RecentIncome from '../../components/Dashboard/RecentIncome.jsx';
 
 function Home() {
 
@@ -63,7 +64,7 @@ function Home() {
   return (
     <DashboardLayout activeMenu = 'Dashboard'>
         <div className='my-5 mx-auto ' >
-          {/* <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
               <InfoCard
                 icon={<IoMdCard/>}
                 label="Total Balance"
@@ -85,7 +86,7 @@ function Home() {
                 color="bg-red-600"
               />
 
-          </div> */}
+          </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
               <RecentTransactions
@@ -112,6 +113,12 @@ function Home() {
                 data={incomeData.slice(0, 4)}
                 totalIncome={totalIncome}
               />
+
+              <RecentIncome
+                transactions={dashboardData?.last60DaysIncome?.transaction || [] } 
+                onSeeMore={() => navigate('/income')}
+              />
+
           </div>
 
           
