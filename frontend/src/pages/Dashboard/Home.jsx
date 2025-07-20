@@ -101,12 +101,12 @@ function Home() {
               />
 
               <ExpenseTransactions
-                transactions={dashboardData?.Last30DaysExpenses?.transaction || [] }
+                transactions={dashboardData?.last30DaysExpenses?.transaction || [] }
                 onSeeMore={()=>navigate("/expense")}
               />
 
               <Last30DaysExpenses
-                data={dashboardData?.Last30DaysExpenses?.transaction || []}
+                data={dashboardData?.last30DaysExpenses?.transaction || []}
               />
 
               <RecentIncomeWithChart
