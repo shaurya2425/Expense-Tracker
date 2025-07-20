@@ -7,7 +7,7 @@ import { validateEmail } from '../../utils/helper'
 import ProfilePhotoSelector from '../../components/Inputs/ProfilePhotoSelector'
 import axiosInstance from '../../utils/axiosInstance'
 import { useContext } from 'react'
-import { UserContext } from '../../context/UserContext'
+import { UserContext } from '../../context/userContext'
 import uploadImage from '../../utils/uploadImage'
 import { API_PATHS } from '../../utils/apiPaths'
 
