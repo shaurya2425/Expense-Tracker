@@ -116,7 +116,7 @@ function Home() {
 
               <RecentIncome
                 transactions={dashboardData?.last60DaysIncome?.transaction || [] } 
-                onSeeMore={() => navigate('/income')}
+                onSeeMore={()=>navigate("/income")}
               />
 
           </div>

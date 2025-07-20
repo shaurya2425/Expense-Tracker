@@ -9,7 +9,7 @@ function RecentIncome({transactions,onSeeMore}) {
         <div className='flex items-center justify-between' >
             <h5 className='text-xl'>Income</h5>
 
-            <button className='card-btn' >
+            <button className='card-btn' onClick={onSeeMore} >
                 See All <LuArrowRight className='text-base'/>
             </button>
         </div>
