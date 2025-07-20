@@ -24,7 +24,7 @@ function Navbar({activeMenu}) {
             }
         </button>
 
-        <h2 className='text-lg font-medium text-black' >Expense Tracker</h2>
+        <h2 className='text-2xl font-medium text-black' >Expense Tracker</h2>
 
         {openSideMenu && (
             <div className='flex absolute top-[61px] left-0 bg-white  ' >
