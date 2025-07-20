@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { UserContext } from "../../context/userContext.jsx";
 import { useNavigate } from "react-router-dom";
 import CharAvatar from "../Cards/CharAvatar.jsx";
+import toast from "react-hot-toast";
 
 function SideMenu({ activeMenu }) {
   const { user, clearUser } = useContext(UserContext);
@@ -16,12 +17,15 @@ function SideMenu({ activeMenu }) {
       return;
     }
 
-    navigate(route);
+     setTimeout(() => {
+      navigate("/login");
+    }, 4000); // wait 1 second so toast shows
   };
 
   const handleLogout = () => {
     localStorage.clear();
     clearUser();
+    toast.success("You are logged out successfully!");
     navigate("/login");
   };
 
