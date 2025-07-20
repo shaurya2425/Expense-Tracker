@@ -31,7 +31,7 @@ function AddIncomeForm({onAddIncome}) {
 
       <Input
         value={income.amount}
-        onChange={({target}) => handleChange("source",target.value)}
+        onChange={({target}) => handleChange("amount",target.value)}
         label="Amount"
         placeholder=""
         type="number"
@@ -39,7 +39,7 @@ function AddIncomeForm({onAddIncome}) {
 
       <Input
         value={income.date}
-        onChange={({target}) => handleChange("source",target.value)}
+        onChange={({target}) => handleChange("date",target.value)}
         label="Date"
         placeholder=""
         type="date"
