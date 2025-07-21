@@ -171,7 +171,7 @@ function Expense() {
             title="Delete "
           >
             <DeleteAlert
-              content="Are you sure you want to delete this income detail?"
+              content="Are you sure you want to delete this expense detail?"
               onDelete={()=> deleteExpense(openDeleteAlert.data)}
             />
           </Modal>
