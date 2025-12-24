@@ -1,51 +1,63 @@
-import React from "react";
+
+import React from "react"
 
 import { 
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
-} from "react-router-dom";
+} from "react-router-dom"
 
-import Login from "./pages/Auth/Login";
-import SignUp from "./pages/Auth/SignUp";
-import Home from "./pages/Dashboard/Home";
-import Income from "./pages/Dashboard/Income";
-import Expense from "./pages/Dashboard/Expense";
-import { UserProvider } from "./context/UserContext.jsx"; // ✔️ fixed
-import { Toaster } from "react-hot-toast";
+import Login from './pages/Auth/Login'
+import SignUp from './pages/Auth/SignUp'
+import Home from "./pages/Dashboard/Home"
+import Income from "./pages/Dashboard/Income"
+import Expense from "./pages/Dashboard/Expense"
+import UserProvider from "./context/userContext"
+import {Toaster} from 'react-hot-toast'
 
 
 function App() {
+  
+
   return (
     <UserProvider>
+    <div>
       <Router>
         <Routes>
-          <Route path="/" element={<Root />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signUp" element={<SignUp />} />
-          <Route path="/dashboard" element={<Home />} />
-          <Route path="/income" element={<Income />} />
-          <Route path="/expense" element={<Expense />} />
+          <Route path="/" element={<Root/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/signUp" element={<SignUp/>} />
+          <Route path="/dashboard" element={<Home/>} />
+          <Route path="/income" element={<Income/>} />
+          <Route path="/expense" element={<Expense/>} />
         </Routes>
       </Router>
+    </div>
 
-      <Toaster
+    <Toaster
         toastOptions={{
-          style: { fontSize: "16px" },
+          className:"",
+          style:{
+            fontSize:'16px'
+          },
         }}
-      />
+    />
+
     </UserProvider>
-  );
+  )
 }
 
-export default App;
-
+export default App
 
 const Root = () => {
+  // Check if token exist in local storage
   const isAuthenticated = !!localStorage.getItem("token");
 
-  return isAuthenticated
-    ? <Navigate to="/dashboard" replace />
-    : <Navigate to="/login" replace />;
-};
+  // Redirect to dashboard if authenticated, otherwise to login
+  return isAuthenticated? (
+    <Navigate to='/dashboard'/>
+  ):(
+    <Navigate to='/login' />
+  )
+}
